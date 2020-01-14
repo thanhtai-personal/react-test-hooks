@@ -430,4 +430,37 @@ export default function asyncComponent(getComponent) {
   }
   return AsyncComponent;
 }
+
+// use to route
+// Dynamically imported components
+const Home = asyncComponent(() =>
+  import('./Home').then(module => module.default)
+)
+
+const Blog = asyncComponent(() =>
+  import('./Blog').then(module => module.default)
+)
+
+<Switch>
+  <Route exact path="/" component={Home} />
+  <Route path="/blog" component={Blog} />
+</Switch>
+
  */
+
+//**Sử dụng shouldComponentUpdate và React.PureComponent */
+/*
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      !shallowEqual(this.props, nextProps) ||
+      !shallowEqual(this.state, nextState)
+    );
+  }
+*/
+
+/**
+ * Về UI và UX
+ * UI là giao diện người dùng. UI tốt là đẹp. Vậy UI là câu hỏi "có đẹp không?"
+ * UX là trãi nghiệm người dùng. UX tốt là đươc đánh giá tốt, dể dùng. Còn UX trả lời câu hỏi "có tiện không?"
+ */
+
