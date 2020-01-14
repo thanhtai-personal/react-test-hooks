@@ -343,6 +343,27 @@ const App = () => {
     return isOnline;
   }
 
+  // test React.lazy
+  /**
+   * 
+    trong React, chúng ta có React.lazy cho phép chúng ta render một import động như component.
+    Điều này làm cho việc chia tách và tải các component của React trở nên dễ dàng hơn.
+    Chúng ta có thể làm điều này thay vì nhập một component từ một tệp khác và cho nó hiển thị ngay lập tức.
+   */
+  // class lazyComponent extends React.Component {
+  //   render() {
+  //     return (<div>lazy component</div>)
+  //   }
+  // }
+
+  // const lazyComponent = () => {
+  //   return (<div>lazy component</div>)
+  // } // cannot do this
+
+  // const LazyComponent = React.lazy(lazyComponent)
+  // const LazyComponent = React.lazy(() => import('./lazyComponent'))
+  // const loadingElement = <div>Loading Component...</div>
+
   console.log('rendered')
   return (
     <TestContext.Provider value={themes.dark}>
@@ -365,6 +386,9 @@ const App = () => {
       <ListPage dataList={['asdf', 'qwer', 'zxcv']} title='test React.memo'/>
       <TextInputWithFocusButton />
       <FancyInput />
+      {/* <React.Suspense fallback={loadingElement}>
+        <LazyComponent />
+      </React.Suspense> */}
     </TestContext.Provider>
   );
 }
